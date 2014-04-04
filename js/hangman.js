@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 	var hangmanSetup = function () {
 
-		$guessWords.text(word);
+		
 		_.each(word.split(''), function (letter, index) {
 			$('#letters').append("<div id='" + index + "'>" + letter + "</div>");
 		});
@@ -36,15 +36,16 @@ $(document).ready(function () {
 
 	};
 
-	var letterValidation = function (letter1) {
-		guessedLetters.push(letter1);
 
-		if (_.contains(word, letter1)) {
+	var letterValidation = function (letter2) {
+		guessedLetters.push(letter2);
+
+		if (_.contains(word, letter2)) {
 
 		}else{
 
 		};
-
+		console.log("hello its mark")
 
 	}
 
