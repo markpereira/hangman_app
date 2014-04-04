@@ -36,10 +36,10 @@ $(document).ready(function () {
 
 	};
 
-	var letterValidation = function (letter) {
-		guessedLetters.push(letter);
+	var letterValidation = function (letter1) {
+		guessedLetters.push(letter1);
 
-		if (_.contains(word, letter)) {
+		if (_.contains(word, letter1)) {
 
 		}else{
 
@@ -49,6 +49,6 @@ $(document).ready(function () {
 	}
 
     hangmanSetup();
-
+    console.log('Hello');
 });
 
