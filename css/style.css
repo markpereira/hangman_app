@@ -1,0 +1,14 @@
+html {
+/*    background-color: red;
+*/}
+
+.container {
+    display: inline-block;
+}
+
+#container .letter {
+    margin-right: 10px;
+    font-size: 30px;
+    border: 5px solid black;
+    border-radius: 100px;
+}
