@@ -66,6 +66,10 @@ $(document).ready(function () {
         });
 
 
+        // Call the hideSolution function whenever the hangmanSetup start/reload.
+		hideSolution();
+
+
     }; // end of the hangmanSetup function. -----------------------
 
 
@@ -98,8 +102,6 @@ $(document).ready(function () {
     // Call the hangmanSetup function whenever the page start/reload.
     hangmanSetup();
 
-    // Call the hideSolution function whenever the page start/reload.
-    hideSolution();
 
 
 }); // end of the document.ready function. 
