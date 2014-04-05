@@ -16,6 +16,7 @@ $(document).ready(function () {
     // Empty arrays to store letters.
     var guessedLetters = [];
     var solution = [];
+    var counter = 0;
 
 	// ----------------- end of the variables -------------------
 
@@ -24,7 +25,20 @@ $(document).ready(function () {
     // Define hangmanSetup function -----------------------
     var hangmanSetup = function () {
 
-    	indexID = 0
+		// function to hide the secret word at the beginning
+	    var hideSolution = function () {
+			$('.solution_letter').hide();
+		};
+
+
+    	// indexID = 0
+
+		// function to show the secret word's letter if the user pick the right letter.
+		window.showSolution = function () {  // Global variable, Im sorry
+			$('.solution_letter').show();
+			console.log(indexID)
+		};
+
 
 		_.each(split_word, function (letter, index) {
 	        $('#letters').append("<div class='solution_letter' id='" + index + "'>" + letter + "</div>");
@@ -32,37 +46,39 @@ $(document).ready(function () {
 	    });
 
 
-		// function to hide the secret word at the beginning
-	    var hideSolution = function () {
-			$('.solution_letter').hide();
-		};
-
-
-		// function to show the secret word's letter if the user pick the right letter.
-		window.showSolution = function () {  // Global variable, Im sorry
-			$('#' + indexID).show();
-			console.log(indexID)
-		};
-
-
-
 		// Getting all the alphabets from array and print it on screen.
         _.each(letters, function (letter) {
-            $('#container').append("<div class='letter'>" + letter + "</div>");
+            $('#container').append("<span class='letter'>" + letter + "</span>");
         });
 
-        var $letter = $('.letter');
-        console.log($letter);
 
+        // Function for giveup button
+        var $giveup = $('#giveup');
+
+        $giveup.on('click', function () {
+            $('.solution_letter').show();
+            $('#loser').text('You are lose!')
+        });
+
+
+        // Function for restart button
+        var $restart = $('#restart');
+
+        $restart.on('click', function () {
+            window.location = window.location;
+        });
 
 
         // when the user click on particular letter, fadeOut the letter.
+        var $letter = $('.letter');
+        console.log($letter);
+
         $letter.on('click', function () {
             $(this).fadeOut();
             var pickedLetter = $(this).html();
+            console.log(pickedLetter);
             letterValidation(pickedLetter);
             processGuess(pickedLetter);
-            //call another function and pass in the letter;
         });
 
 
@@ -78,13 +94,6 @@ $(document).ready(function () {
     var letterValidation = function (letter) {
         guessedLetters.push(letter);
         console.log('guessletter ' + guessedLetters);
-
-        // if (_.contains(word, letter)) {
-
-        // } else {
-
-        // }
-
     };
 
 
@@ -94,7 +103,46 @@ $(document).ready(function () {
             solution.push(l);
             console.log('correct ' + solution);
             showSolution();
+        } else {
+        	counter += 1
+        	console.log('counter: ' + counter)
+
         }
+
+
+        switch (counter)
+			{
+			case 0:
+			  $('#pictures').append('<img src="img/hangman00.jpg">');
+			  break;
+			case 1:
+			  $('#pictures').append('<img src="img/hangman01.jpg">');
+			  break;
+			case 2:
+			  $('#pictures').append('<img src="img/hangman02.jpg">');
+			  break;
+			case 3:
+			  $('#pictures').append('<img src="img/hangman03.jpg">');
+			  break;
+			case 4:
+			  $('#pictures').append('<img src="img/hangman04.jpg">');
+			  break;
+			case 5:
+			  $('#pictures').append('<img src="img/hangman05.jpg">');
+			  break;
+			case 6:
+			  $('#pictures').append('<img src="img/hangman07.jpg">');
+			  break;
+			case 7:
+			  $('#pictures').append('<img src="img/hangman08.jpg">');
+			  break;
+			case 8:
+			  $('#pictures').append('<img src="img/hangman09.jpg">');
+			  break;
+			case 9:
+			  $('#pictures').append('<img src="img/hangman10.jpg">');
+			  break;
+			}
     };
 
 
