@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-	// All the variables live here : -----------------------------------
+    // All the variables live here : -----------------------------------
     var words = ["Skynet", "Digital", "FitBit", "Realtime", "ManPacks", "Landing", "Conversion", "Social", "Airbnb", "SnapChat", "Bangedup", "Application", "Analytics", "Geolocation", "Nodeability", "KickStarter", "Matching", "Adults", "Pinterest", "Groupon", "Appstore"];
 
     var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -18,35 +18,35 @@ $(document).ready(function () {
     var solution = [];
     var counter = 0;
 
-	// ----------------- end of the variables -------------------
+    // ----------------- end of the variables -------------------
 
 
 
     // Define hangmanSetup function -----------------------
     var hangmanSetup = function () {
 
-		// function to hide the secret word at the beginning
-	    var hideSolution = function () {
-			$('.solution_letter').hide();
-		};
+        // function to hide the secret word at the beginning
+        var hideSolution = function () {
+            $('.solution_letter').hide();
+        };
 
 
-    	// indexID = 0
+        // indexID = 0
 
-		// function to show the secret word's letter if the user pick the right letter.
-		window.showSolution = function () {  // Global variable, Im sorry
-			$('.solution_letter').show();
-			console.log(indexID)
-		};
-
-
-		_.each(split_word, function (letter, index) {
-	        $('#letters').append("<div class='solution_letter' id='" + index + "'>" + letter + "</div>");
-	        indexID = index
-	    });
+        // function to show the secret word's letter if the user pick the right letter.
+        window.showSolution = function () {  // Global variable, Im sorry
+            $('.solution_letter').show();
+            console.log(indexID)
+        };
 
 
-		// Getting all the alphabets from array and print it on screen.
+        _.each(split_word, function (letter, index) {
+            $('#letters').append("<div class='solution_letter' id='" + index + "'>" + letter + "</div>");
+            indexID = index
+        });
+
+
+        // Getting all the alphabets from array and print it on screen.
         _.each(letters, function (letter) {
             $('#container').append("<span class='letter'>" + letter + "</span>");
         });
@@ -83,7 +83,7 @@ $(document).ready(function () {
 
 
         // Call the hideSolution function whenever the hangmanSetup start/reload.
-		hideSolution();
+        hideSolution();
 
 
     }; // end of the hangmanSetup function. -----------------------
@@ -104,8 +104,8 @@ $(document).ready(function () {
             console.log('correct ' + solution);
             showSolution();
         } else {
-        	counter += 1
-        	console.log('counter: ' + counter)
+            counter += 1
+            console.log('counter: ' + counter)
 
         }
 
@@ -153,6 +153,7 @@ $(document).ready(function () {
 			  $('#loser').text('You are lose!')
 			  break;
 			}
+
     };
 
 
@@ -163,6 +164,3 @@ $(document).ready(function () {
 
 
 }); // end of the document.ready function. 
-
-
-
