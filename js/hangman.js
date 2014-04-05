@@ -112,35 +112,45 @@ $(document).ready(function () {
 
         switch (counter)
 			{
-			case 0:
-			  $('#pictures').append('<img src="img/hangman00.jpg">');
-			  break;
+			// case 0:
+			//   $('#pictures').append('<img src="img/hangman00.jpg">');
+			//   break;
 			case 1:
+			  $('#pictures img').fadeOut();
 			  $('#pictures').append('<img src="img/hangman01.jpg">');
 			  break;
 			case 2:
+			  $('#pictures img').fadeOut();
 			  $('#pictures').append('<img src="img/hangman02.jpg">');
 			  break;
 			case 3:
+			  $('#pictures img').fadeOut();
 			  $('#pictures').append('<img src="img/hangman03.jpg">');
 			  break;
 			case 4:
+			  $('#pictures img').fadeOut();
 			  $('#pictures').append('<img src="img/hangman04.jpg">');
 			  break;
 			case 5:
+			  $('#pictures img').fadeOut();
 			  $('#pictures').append('<img src="img/hangman05.jpg">');
 			  break;
 			case 6:
+			  $('#pictures img').fadeOut();
 			  $('#pictures').append('<img src="img/hangman07.jpg">');
 			  break;
 			case 7:
+			  $('#pictures img').fadeOut();
 			  $('#pictures').append('<img src="img/hangman08.jpg">');
 			  break;
 			case 8:
+			  $('#pictures img').fadeOut();
 			  $('#pictures').append('<img src="img/hangman09.jpg">');
 			  break;
 			case 9:
+			  $('#pictures img').fadeOut();
 			  $('#pictures').append('<img src="img/hangman10.jpg">');
+			  $('#loser').text('You are lose!')
 			  break;
 			}
     };

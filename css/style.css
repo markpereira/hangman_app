@@ -12,3 +12,7 @@ html {
     border: 5px solid black;
     border-radius: 100px;
 }
+
+img {
+    width: 700px;
+}
