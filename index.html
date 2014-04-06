@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <meta charset="utf-8" />
-  <title>Hangman</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
- </head>
- <body>	
+    <head>
+        <meta charset="utf-8" />
+        <title>Hangman</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>	
+        <div class="hangman_game">
+            
+            <div class="container">
+            	<div id="container"></div>
+                <div id="pictures"><img src="img/hangman00.jpg"></div>
+            </div>
 
-    <button id="restart">restart</button>
-    <button id="giveup">Give up</button>
-    <span id="loser"></span>
+        	<div id='letters'></div>
 
-	<div id="container">
-	</div>
-	<p id='letters'></p>
+            <h2 id="loser"></h2>
 
-    <div id="pictures">
-        <img src="img/hangman00.jpg">
-    </div>
+            <button id="restart">R</button>
+            <button id="giveup">Give up</button>
 
-     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
-     <script src="js/hangman.js"></script>
+            <div id='guessed_letters'></div>
 
- </body>
+        </div>
+
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+        <script src="js/hangman.js"></script>
+
+    </body>
 </html>

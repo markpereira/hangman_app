@@ -1,18 +1,81 @@
 html {
-/*    background-color: red;
-*/}
+    background: url('/Users/NixSiow/Projects/wdi-4/06-javascript/hangman_app/img/background.jpg') center center fixed;
+    text-align: center;
+}
 
 .container {
+    margin: 50px;
+}
+
+#container .letter, .guessed_letter {
+    margin-right: 15px;
+    font-size: 30px;
+}
+
+#container {
+    max-width: 250px;
     display: inline-block;
 }
 
-#container .letter {
-    margin-right: 10px;
-    font-size: 30px;
-    border: 5px solid black;
-    border-radius: 100px;
+#pictures {
+    display: inline-block;
 }
 
 img {
-    width: 700px;
+    width: 350px;
+    display: absolute;
+    border-radius: 20px;
+}
+
+#letters {
+    display: inline-block;
+    margin: 30px;
+}
+
+.solution_letter {
+    margin-right: 15px;
+    display: inline-block;
+    color: #ff4d3e;
+    text-decoration: underline;
+}
+
+#solution_letter_container {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-bottom: 1px solid black;
+    margin: 10px;
+}
+
+
+
+/* Outline Inward */
+.outline-inward {
+  display: inline-block;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.outline-inward:before {
+  pointer-events: none;
+  content: '';
+  position: absolute;
+  border: #e1e1e1 solid 4px;
+  top: -16px;
+  right: -16px;
+  bottom: -16px;
+  left: -16px;
+  opacity: 0;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: top, right, bottom, left;
+  transition-property: top, right, bottom, left;
+}
+.outline-inward:hover:before, .outline-inward:focus:before, .outline-inward:active:before {
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  opacity: 1;
 }

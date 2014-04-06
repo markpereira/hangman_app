@@ -3,7 +3,7 @@ $(document).ready(function () {
     // All the variables live here : -----------------------------------
     var words = ["Skynet", "Digital", "FitBit", "Realtime", "ManPacks", "Landing", "Conversion", "Social", "Airbnb", "SnapChat", "Bangedup", "Application", "Analytics", "Geolocation", "Nodeability", "KickStarter", "Matching", "Adults", "Pinterest", "Groupon", "Appstore"];
 
-    var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    var letters = _.range(0, 26).map( function (i) { return String.fromCharCode(65 + i); });
 
 
     var word = _.sample(words).toUpperCase();
@@ -31,25 +31,36 @@ $(document).ready(function () {
         };
 
 
-        // indexID = 0
-
-        // function to show the secret word's letter if the user pick the right letter.
-        window.showSolution = function () {  // Global variable, Im sorry
+        // function to show the solution if user give up / lost the game
+        window.showSolution = function () { // Global variable, Im sorry
             $('.solution_letter').show();
-            console.log(indexID)
         };
 
 
+        // function to show the secret word's letter if the user pick the right letter.
+        window.showLetter = function (letter) {  // Global variable, Im sorry
+          $('.solution_letter:contains(' + letter + ')').show();
+        };
+
+        // Append <div> with letter to <div>id=letters
         _.each(split_word, function (letter, index) {
-            $('#letters').append("<div class='solution_letter' id='" + index + "'>" + letter + "</div>");
-            indexID = index
+            $('#letters').append("<div id='solution_letter_container'><h1 class='solution_letter' id='" + index + "'>" + letter + "</h1></div>");
         });
 
 
         // Getting all the alphabets from array and print it on screen.
         _.each(letters, function (letter) {
-            $('#container').append("<span class='letter'>" + letter + "</span>");
+            $('#container').append("<span class='letter outline-inward'>" + letter + "</span>");
         });
+
+
+        // Print all the guessed letter to the screen
+        window.printGuessedLetter = function () {
+        	_.each(guessedLetters, function (letter) {
+            	$('#guessed_letters').append("<span class='guessed_letter'>" + letter + "</span>");
+        	});
+        };
+
 
 
         // Function for giveup button
@@ -57,7 +68,7 @@ $(document).ready(function () {
 
         $giveup.on('click', function () {
             $('.solution_letter').show();
-            $('#loser').text('You are lose!')
+            $('#loser').text('You lost!')
         });
 
 
@@ -82,11 +93,21 @@ $(document).ready(function () {
         });
 
 
+        // function to check if user win the game.
+	    window.checkWin = function() { // Global variable, im sorry
+	    	_.each(split_word, function (letter) {
+	    		var checker = _.contains(guessedLetters, letter);
+	    		console.log(checker);
+	    	});
+	    	
+	    };
+
+
         // Call the hideSolution function whenever the hangmanSetup start/reload.
         hideSolution();
 
-
     }; // end of the hangmanSetup function. -----------------------
+
 
 
 
@@ -94,6 +115,8 @@ $(document).ready(function () {
     var letterValidation = function (letter) {
         guessedLetters.push(letter);
         console.log('guessletter ' + guessedLetters);
+        $('.guessed_letter').remove();
+        printGuessedLetter();
     };
 
 
@@ -102,57 +125,56 @@ $(document).ready(function () {
         if (_(split_word).include(l)) {
             solution.push(l);
             console.log('correct ' + solution);
-            showSolution();
+            showLetter(l);
+            // checkWin();
+
         } else {
             counter += 1
             console.log('counter: ' + counter)
+        };
 
-        }
-
-
+        // to show hangman picture!
         switch (counter)
-			{
-			// case 0:
-			//   $('#pictures').append('<img src="img/hangman00.jpg">');
-			//   break;
-			case 1:
-			  $('#pictures img').fadeOut();
-			  $('#pictures').append('<img src="img/hangman01.jpg">');
-			  break;
-			case 2:
-			  $('#pictures img').fadeOut();
-			  $('#pictures').append('<img src="img/hangman02.jpg">');
-			  break;
-			case 3:
-			  $('#pictures img').fadeOut();
-			  $('#pictures').append('<img src="img/hangman03.jpg">');
-			  break;
-			case 4:
-			  $('#pictures img').fadeOut();
-			  $('#pictures').append('<img src="img/hangman04.jpg">');
-			  break;
-			case 5:
-			  $('#pictures img').fadeOut();
-			  $('#pictures').append('<img src="img/hangman05.jpg">');
-			  break;
-			case 6:
-			  $('#pictures img').fadeOut();
-			  $('#pictures').append('<img src="img/hangman07.jpg">');
-			  break;
-			case 7:
-			  $('#pictures img').fadeOut();
-			  $('#pictures').append('<img src="img/hangman08.jpg">');
-			  break;
-			case 8:
-			  $('#pictures img').fadeOut();
-			  $('#pictures').append('<img src="img/hangman09.jpg">');
-			  break;
-			case 9:
-			  $('#pictures img').fadeOut();
-			  $('#pictures').append('<img src="img/hangman10.jpg">');
-			  $('#loser').text('You are lose!')
-			  break;
-			}
+            {
+            case 1:
+              $('#pictures img').hide(); 
+              $('#pictures').append('<img src="img/hangman01.jpg">');
+              break;
+            case 2:
+              $('#pictures img').hide();
+              $('#pictures').append('<img src="img/hangman02.jpg">');
+              break;
+            case 3:
+              $('#pictures img').hide();
+              $('#pictures').append('<img src="img/hangman03.jpg">');
+              break;
+            case 4:
+              $('#pictures img').hide();
+              $('#pictures').append('<img src="img/hangman04.jpg">');
+              break;
+            case 5:
+              $('#pictures img').hide();
+              $('#pictures').append('<img src="img/hangman05.jpg">');
+              break;
+            case 6:
+              $('#pictures img').hide();
+              $('#pictures').append('<img src="img/hangman07.jpg">');
+              break;
+            case 7:
+              $('#pictures img').hide();
+              $('#pictures').append('<img src="img/hangman08.jpg">');
+              break;
+            case 8:
+              $('#pictures img').hide();
+              $('#pictures').append('<img src="img/hangman09.jpg">');
+              break;
+            case 9:
+              $('#pictures img').hide();
+              $('#pictures').append('<img src="img/hangman10.jpg">');
+              $('.solution_letter').show();
+              $('#loser').text('You lost!')
+              break;
+            }
 
     };
 
