@@ -128,7 +128,7 @@ $(document).ready(function () {
             solution.push(l);
             console.log('correct ' + solution);
             showLetter(l);
-            // checkWin();
+            checkWin();
 
         } else {
             counter += 1
