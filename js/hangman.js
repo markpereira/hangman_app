@@ -68,7 +68,9 @@ $(document).ready(function () {
 
         $giveup.on('click', function () {
             $('.solution_letter').show();
-            $('#loser').text('You lost!')
+            $('#loser').text('You lost!');
+            $('#pictures img').hide();
+            $('#pictures').append('<img src="img/hangman10.jpg">');
         });
 
 
